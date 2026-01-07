@@ -1,28 +1,26 @@
-# Problem Statement: Given an array of n size, rotate the array by k elements
+# Problem Statement: Given an array of integers, rotating array of elements by k elements either left or right.
 
 # Examples:
 
 # Example 1:
-# Input: N = 5, array[] = {1,2,3,4,5} K=2
-# Output: {3,4,5,1,2}
-# Explanation: Rotate the array to right by 2 elements.
+# Input: N = 7, array[] = {1,2,3,4,5,6,7} , k=2 , right
+# Output: 6 7 1 2 3 4 5
+# Explanation: array is rotated to right by 2 position .
 
 # Example 2:
-# Input: N = 7, array[] = {1,2,3,4,5,6,7} K=3
-# Output: {4,5,6,7,1,2,3}
-# Explanation: Rotate the array to right by 3 elements.
+# Input: N = 6, array[] = {3,7,8,9,10,11} , k=3 , left 
+# Output: 9 10 11 3 7 8
+# Explanation: Array is rotated to right by 3 position.
 
-def rearrange(arr,k):
-    l=len(arr)
-    k = k if (k<l) else k%l
-    ans=[]
-    for i in range(k,l):
-        ans.append(arr[i])
-    for i in range(k):
-        ans.append(arr[i])
-    print(ans)
+
+def RotateByK(arr,k):
+    last_elemt=arr[-k:]
+    
+    for i in range(len(arr)-1,-1,-1):
+        arr[i]=arr[i-k]
         
-
-arr=[1,2,3,4,5,6,7]
-l=2
-answer=rearrange(arr,l)
+    arr[:k]=last_elemt
+    return arr
+arr=[3,7,8,9,10,11]
+k=3
+print(RotateByK(arr,k))
